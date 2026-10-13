@@ -1,0 +1,124 @@
+<style>
+body {background-color: #F7F5F5}
+</style>
+<div style="text-align: center; font-family: Comic Sans MS, Helvetica">
+	<h1 style="margin-bottom: 0">Didmle</h1>
+	<p>Get 6 chances to guess a 5 Didms. This is randomized cuz yes</p>
+	<p>Huge thanks to @.sno3iku. @br7hman @isicl_e for Didm images :D</p>
+	<p id="win"></p>
+	<div id="output" style="gap: 10px; width: 500px; background-color: #EDEDED; margin: 10px auto; border-radius: 10px"><p>Didm here</p></div>
+	<div style="display: flex; justify-content: center; gap: 10px">
+
+	<button style="width: 50px; height: 50px" class="btn">OG Didm</button>
+	<button style="width: 50px; height: 50px" class="btn">Didm</button>
+	<button style="width: 50px; height: 50px" class="btn">Scary Didm</button>
+	<button style="width: 50px; height: 50px" class="btn">✌️Didm</button>
+	<button style="width: 50px; height: 50px" class="btn">EVIL Didm</button>
+	<button style="width: 50px; height: 50px" class="btn">0.15 Didm</button>
+	<button style="width: 50px; height: 50px" id="enter">Enter</button>
+	<div>
+</div>
+<script>
+
+const output = document.getElementById("output")
+const buttons = document.querySelectorAll(".btn")
+const enterBtn = document.getElementById("enter")
+const win = document.getElementById("win")
+let thing = [0, 0, 0, 0, 0, 0] //6 btns :D
+let answer = []
+for (let i = 0; i < 5; i++) {answer.push(Math.floor(Math.random()*6)+1)}
+//1 - og didm
+//2 - didm
+//3 - scary didm
+//4 - 2 didm
+//5 - EVIL didm
+//6 - 0.15 didm lol
+let guess = []
+let gameDed = false //falsity
+let att = 0
+let didm = 0
+
+const didmages = [
+    "1.png",
+    "2.png",
+    "3.png",
+    "4.png",
+    "5.png",
+    "6.png"
+]
+
+buttons.forEach((btn, index) => {
+	btn.addEventListener("click", () => {
+		if (thing[index] === 0 && gameDed === false) {
+			if (didm < 5) {
+				thing[index] = index + 1
+				guess.push(index + 1)
+				didm++
+			}
+		}
+	})
+})
+function render() {
+	const row = document.createElement("div")
+	row.style.display = "flex"
+    	row.style.justifyContent = "center"
+    	row.style.gap = "10px"
+
+	const colors = []
+	for (let i = 0; i < 5; i++) {
+    		colors.push("#EBEBEB")
+	}
+	const answerCopyableTwo = [...answer]  //remainings the shadow obbyist
+
+	guess.forEach((thing, index) => {
+		if (thing === answer[index]) {
+			colors[index] = '#02D602'
+			answerCopyableTwo[index] = 0
+		}
+	})
+	guess.forEach((thing, index) => {
+		if (colors[index] !== '#02D602') {          
+			const current = answerCopyableTwo.indexOf(thing)
+			if (current !== -1) {
+				colors[index] = "#FCF403"
+				answerCopyableTwo[current] = 0
+			}
+		}
+	})
+	guess.forEach((thing, index) => {
+		const DIDM = document.createElement("img")
+		DIDM.src = didmages[thing-1]
+		DIDM.width = 50
+		DIDM.height = 50
+		DIDM.style.backgroundColor = colors[index]
+		row.appendChild(DIDM)
+	})
+	output.appendChild(row)
+}
+enterBtn.addEventListener("click", () => {
+	if (guess.length !== 5 || gameDed) return
+	render()
+
+	if (guess.every((thing, index) => thing === answer[index])) {gameDed = true; win.textContent = "gg boi :)"}
+	else if (att === 5) {gameDed = true; win.textContent = "haha u noob loser"}
+
+	att++
+	guess = []
+	thing.fill(0)
+	didm = 0
+})
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
