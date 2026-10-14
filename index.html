@@ -16,6 +16,7 @@ body {background-color: #F7F5F5}
 	<button style="width: 50px; height: 50px" class="btn">EVIL Didm</button>
 	<button style="width: 50px; height: 50px" class="btn">0.15 Didm</button>
 	<button style="width: 50px; height: 50px" id="enter">Enter</button>
+	<button style="width: 50px; height: 50px" id="kill">Kill</button>
 	<div>
 </div>
 <script>
@@ -23,6 +24,7 @@ document.body.style.zoom = "120%"
 const output = document.getElementById("output")
 const buttons = document.querySelectorAll(".btn")
 const enterBtn = document.getElementById("enter")
+const killBtn = document.getElementById("kill")
 const win = document.getElementById("win")
 let thing = [0, 0, 0, 0, 0, 0] //6 btns :D
 let answer = []
@@ -109,7 +111,14 @@ enterBtn.addEventListener("click", () => {
 	didm = 0
 	if (!gameDed) {currentRow = didms()}
 })
-
+killBtn.addEventListener("click", () => {
+	if (gameDed || didm === 0) return
+	guess.pop()
+	didm--
+	const img = currentRow.children[didm]
+    img.src = ""
+    img.style.backgroundColor = "#EBEBEB"
+})
 </script>
 
 
