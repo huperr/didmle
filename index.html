@@ -64,12 +64,12 @@ function didms() {
     row.style.justifyContent = "center"
     row.style.gap = "10px"
 	for (let i = 0; i < 5; i++) { //maek 5 didms
-    	const img = document.createElement("img");
-        img.width = 50;
-        img.height = 50;
-        img.style.backgroundColor = "#EBEBEB";
-        img.style.objectFit = "contain";
-        row.appendChild(img);
+    	const img = document.createElement("img")
+        img.width = 50
+        img.height = 50
+        img.style.backgroundColor = "#EBEBEB"
+        img.style.objectFit = "contain"
+        row.appendChild(img)
     }
 	output.appendChild(row)
 	return row
@@ -93,7 +93,7 @@ function render() {
             }
         }
     })
-    [...currentRow.children].forEach((img, i) => {
+    Array.from(currentRow.children).forEach((img, i) => {
         img.src = didmages[guess[i] - 1]
         img.style.backgroundColor = colors[i]
     })
