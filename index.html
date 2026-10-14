@@ -49,13 +49,11 @@ const didmages = [
 
 buttons.forEach((btn, index) => {
 	btn.addEventListener("click", () => {
-		if (thing[index] === 0 && gameDed === false && didm < 5) {
-				thing[index] = index + 1
-				guess.push(index + 1)
-				didm++
-				const img = currentRow.children[didm - 1]
-        		img.src = didmages[index]
-		}
+		if (gameDed || didm >= 5) return
+		guess.push(index+1)
+		didm++
+		const img = currentRow.children[didm - 1]
+        img.src = didmages[index]
 	})
 })
 function didms() {
@@ -65,8 +63,8 @@ function didms() {
     row.style.gap = "10px"
 	for (let i = 0; i < 5; i++) { //maek 5 didms
     	const img = document.createElement("img")
-        img.width = 50
-        img.height = 50
+        img.width = 40 //smollr for easier 
+        img.height = 40
         img.style.backgroundColor = "#EBEBEB"
         img.style.objectFit = "contain"
         row.appendChild(img)
