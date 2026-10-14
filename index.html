@@ -15,6 +15,7 @@ body {background-color: #F7F5F5}
 	<button style="width: 50px; height: 50px" class="btn">✌️Didm</button>
 	<button style="width: 50px; height: 50px" class="btn">EVIL Didm</button>
 	<button style="width: 50px; height: 50px" class="btn">0.15 Didm</button>
+	<button style="width: 50px; height: 50px" class="btn">Green Didm</button
 	<button style="width: 50px; height: 50px" id="enter">Enter</button>
 	<button style="width: 50px; height: 50px" id="kill">Kill</button>
 	<div>
@@ -28,13 +29,14 @@ const killBtn = document.getElementById("kill")
 const win = document.getElementById("win")
 let thing = [0, 0, 0, 0, 0, 0] //6 btns :D
 let answer = []
-for (let i = 0; i < 5; i++) {answer.push(Math.floor(Math.random()*6)+1)}
+for (let i = 0; i < 5; i++) {answer.push(Math.floor(Math.random()*7)+1)}
 //1 - og didm
 //2 - didm
 //3 - scary didm
 //4 - 2 didm
 //5 - EVIL didm
 //6 - 0.15 didm lol
+//7 - green
 let guess = []
 let gameDed = false //falsity
 let att = 0
@@ -46,7 +48,8 @@ const didmages = [
     "3.png",
     "4.png",
     "5.png",
-    "6.png"
+    "6.png",
+	"7.png"
 ]
 
 buttons.forEach((btn, index) => {
